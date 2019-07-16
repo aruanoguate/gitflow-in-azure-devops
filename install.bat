@@ -1,4 +1,6 @@
-ECHO OFF
-REM This should iterate over all the files in the 'bat' directory
-REM and will execute them to add all the git aliases
-for /f "usebackq delims=|" %%f in (`dir /b "bat"`) do call "bat/%%f"
+ECHO ON
+REM This should iterate over all the modules and execute
+REM the init script on each one
+FOR /f %%G in ('dir /b modules') DO (
+    CALL "modules/%%G/init.bat"
+)
