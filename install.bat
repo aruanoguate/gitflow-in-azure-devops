@@ -1,4 +1,4 @@
-ECHO ON
+ECHO OFF
 FOR /f %%M IN ('dir /b modules') DO (
     FOR /f %%S IN ('dir /b modules\%%M\*.sh') DO (
         CALL :PROCESS_SHELL %%M %%S
