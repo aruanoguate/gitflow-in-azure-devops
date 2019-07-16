@@ -7,10 +7,10 @@ FOR /f %%M IN ('dir /b modules') DO (
 GOTO :eof
 
 :PROCESS_SHELL
-SET aliasName=%1.%2
-SET aliasName=%aliasName:.sh=%
-SET filename='%CD%\modules\%1\%2'
-SET aliasCmd="!func() { sh %filename%; }; func"
-SET gitCmd=git config --global alias.%aliasName% %aliasCmd%
-REM %gitCmd%
+    SET aliasName=%1.%2
+    SET aliasName=%aliasName:.sh=%
+    SET filename='%CD%\modules\%1\%2'
+    SET aliasCmd="!func() { sh %filename%; }; func"
+    SET gitCmd=git config --global alias.%aliasName% %aliasCmd%
+    %gitCmd%
 EXIT /B
