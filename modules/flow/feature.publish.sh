@@ -14,4 +14,10 @@ git reset --hard origin/develop
 git checkout $BRANCH
 git rebase develop
 git push --force origin $BRANCH
-git pr create --target-branch develop --output table
+FEATURE=${BRANCH/#"feature/"/""}
+git pr create \
+  --delete-source-branch \
+  --output table \
+  --target-branch develop \
+  --title "Feature completed: $FEATURE"
+  
