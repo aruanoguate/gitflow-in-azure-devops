@@ -7,11 +7,11 @@ if [[ "$BRANCH" != "feature"* ]]; then
   exit 1;
 fi
 
-git fetch --all
+git pull
+git fetch develop
 git checkout develop
 git reset --hard origin/develop
 git checkout $BRANCH
-git rebase origin/$BRANCH
 git rebase develop
 git push --force origin $BRANCH
-git pr create --target-branch develop
+git pr create --target-branch develop --output table
