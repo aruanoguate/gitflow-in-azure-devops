@@ -13,5 +13,5 @@ git reset --hard origin/develop
 git checkout $BRANCH
 git rebase origin/$BRANCH
 git rebase develop
-git push origin $BRANCH
+git push --force origin $BRANCH
 git pr create --target-branch develop
