@@ -7,4 +7,11 @@ if [[ "$BRANCH" != "feature"* ]]; then
   exit 1;
 fi
 
-git flow.feature.update
+git fetch --all
+git checkout develop
+git reset --hard origin/develop
+git checkout $BRANCH
+git rebase origin/$BRANCH
+git rebase develop
+git push origin $BRANCH
+git pr create --target-branch develop
