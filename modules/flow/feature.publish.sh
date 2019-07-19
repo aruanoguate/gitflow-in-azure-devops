@@ -20,4 +20,5 @@ git pr create \
   --output table \
   --target-branch develop \
   --title "Feature completed: $FEATURE"
+git checkout develop
   
