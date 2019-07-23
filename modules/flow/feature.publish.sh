@@ -8,6 +8,7 @@ if [[ "$BRANCH" != "feature/"* ]]; then
 fi
 
 git pull origin $BRANCH
+git push origin $BRANCH
 git fetch origin develop
 git checkout develop
 git reset --hard origin/develop
