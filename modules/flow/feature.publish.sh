@@ -9,9 +9,7 @@ fi
 git fetch origin $BRANCH
 LAST_LOCAL_COMMIT=$(git rev-parse HEAD)
 LAST_UPSTREAM_COMMIT=$(git rev-parse @{u})
-if [[ "$LAST_LOCAL_COMMIT" != "$LAST_REMOTE_COMMIT" ]]; then
-  echo 'The branch should be up to date with its upstream';
-  exit 1;
+if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; then
 fi
 
 git fetch origin develop
