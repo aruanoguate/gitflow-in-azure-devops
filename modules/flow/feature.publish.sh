@@ -21,6 +21,14 @@ git reset --hard origin/develop
 
 git checkout $BRANCH
 git rebase develop
+REBASE_SUCCESS=$?
+if [[ $REBASE_SUCCESS -ne 0 ]];
+then
+    git rebase --abort
+    echo -e "\e[31mERROR: Not able to automatically rebase 'develop', rebase manually and then publish again\e[0m"
+    exit 1
+fi
+
 git push --force origin $BRANCH
 
 FEATURE=${BRANCH/#"feature/"/""}
