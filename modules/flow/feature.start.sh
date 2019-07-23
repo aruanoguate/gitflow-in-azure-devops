@@ -9,6 +9,7 @@ fi
 git fetch origin develop
 git checkout develop
 git reset --hard origin/develop
+
 git branch feature/$BRANCH develop
 git checkout feature/$BRANCH
 git push --set-upstream origin feature/$BRANCH
