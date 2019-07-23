@@ -18,6 +18,7 @@ FEATURE=${BRANCH/#"feature/"/""}
 git pr create \
   --delete-source-branch \
   --output table \
+  --reviewers "CompIQ Team" \
   --target-branch develop \
   --title "Feature completed: $FEATURE"
 git checkout develop
