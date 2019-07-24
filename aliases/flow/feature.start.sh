@@ -1,8 +1,10 @@
 #!/bin/bash
 
+. $HOME/gitflow/modules/flow.sh
+
 BRANCH=$1
 if [[ -z "$BRANCH" ]]; then
-  echo 'A name for the feature branch needs to be provided';
+  showError "A name for the feature branch needs to be provided";
   exit 1;
 fi
 
