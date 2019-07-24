@@ -38,7 +38,7 @@ function verifyUpToDateBranch() {
     fi
 }
 
-function verifyBranchName() {
+function verifyBranchNameProvided() {
     local BRANCHNAME=$1;
     if [[ -z "$BRANCHNAME" ]]; then
         showError "A name for the branch needs to be provided";

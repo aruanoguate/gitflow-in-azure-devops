@@ -7,7 +7,7 @@ BRANCH=$1;
 . $HOME/gitflow/modules/flow.sh;
 
 # Validations
-verifyBranchName $BRANCH;
+verifyBranchNameProvided $BRANCH;
 
 # Process
 updateDevelopBranch;
