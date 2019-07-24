@@ -7,9 +7,11 @@ function showWarning() {
 }
 
 function updateDevelopBranch() {
+    local BRANCH="$(getBranchName)"
     git fetch origin develop;
     git checkout develop;
     git reset --hard origin/develop;
+    git checkout $BRANCH
 }
 
 function getBranchName() {
