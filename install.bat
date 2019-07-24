@@ -10,7 +10,7 @@ GOTO :eof
     SET aliasName=%1.%2
     SET aliasName=%aliasName:.sh=%
     SET filename='%CD%\aliases\%1\%2'
-    SET aliasCmd="!func() { sh %filename% $@; }; func"
+    SET aliasCmd="!func() { bash %filename% $@; }; func"
     SET gitCmd=git config --global alias.%aliasName% %aliasCmd%
     %gitCmd%
 EXIT /B
