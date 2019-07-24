@@ -10,7 +10,7 @@ BRANCH=$1;
 verifyBranchNameProvided $BRANCH;
 
 # Process
-updateDevelopBranch;
+forceBranchUpdateFromOrigin "develop";
 git branch feature/$BRANCH develop;
 git checkout feature/$BRANCH;
 git push --set-upstream origin feature/$BRANCH;

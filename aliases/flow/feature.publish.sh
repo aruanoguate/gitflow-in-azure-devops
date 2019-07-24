@@ -8,7 +8,7 @@ verifyBranchType "feature";
 verifyUpToDateBranch;
 
 # Process
-updateDevelopBranch;
+forceBranchUpdateFromOrigin "develop";
 tryRebase "develop";
 BRANCH="$(getBranchName)";
 git push --force origin $BRANCH;
