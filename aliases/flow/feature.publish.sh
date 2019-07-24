@@ -2,12 +2,9 @@
 
 . $HOME/gitflow/modules/flow.sh
 
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [[ "$BRANCH" != "feature/"* ]]; then
-  showError "This can only be executed on feature branches"
-  exit 1
-fi
+verifyBranchType "feature"
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git fetch origin $BRANCH
 LAST_LOCAL_COMMIT=$(git rev-parse HEAD)
 LAST_UPSTREAM_COMMIT=$(git rev-parse @{u})

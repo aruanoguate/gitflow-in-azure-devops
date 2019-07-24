@@ -12,3 +12,17 @@ function updateDevelopBranch() {
     git reset --hard origin/develop;
 }
 
+function getBranchName() {
+    local BRANCH=$(git rev-parse --abbrev-ref HEAD);
+    echo "$BRANCH"
+}
+
+function verifyBranchType() {
+    local BRANCHTYPE=$1;
+    local BRANCH="$(getBranchName)"
+    
+    if [[ "$BRANCH" != "$BRANCHTYPE/"* ]]; then
+        showError "This can only be executed on $BRANCHTYPE branches"
+        exit 1
+    fi
+}
