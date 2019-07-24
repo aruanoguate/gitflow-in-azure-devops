@@ -38,6 +38,14 @@ function verifyUpToDateBranch() {
     fi
 }
 
+function verifyBranchName() {
+    local BRANCHNAME=$1;
+    if [[ -z "$BRANCHNAME" ]]; then
+        showError "A name for the branch needs to be provided";
+        exit 1;
+    fi
+}
+
 function updateDevelopBranch() {
     local BRANCH="$(getBranchName)";
     git fetch origin develop;
