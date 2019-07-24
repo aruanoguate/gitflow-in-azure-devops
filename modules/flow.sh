@@ -6,14 +6,6 @@ function showWarning() {
     echo -e "\e[33mWARNING: $1\e[0m";
 }
 
-function updateDevelopBranch() {
-    local BRANCH="$(getBranchName)";
-    git fetch origin develop;
-    git checkout develop;
-    git reset --hard origin/develop;
-    git checkout $BRANCH;
-}
-
 function getBranchName() {
     local BRANCH=$(git rev-parse --abbrev-ref HEAD);
     echo "$BRANCH";
@@ -44,6 +36,14 @@ function verifyUpToDateBranch() {
         git status;
         exit 1;
     fi
+}
+
+function updateDevelopBranch() {
+    local BRANCH="$(getBranchName)";
+    git fetch origin develop;
+    git checkout develop;
+    git reset --hard origin/develop;
+    git checkout $BRANCH;
 }
 
 function tryRebase() {
