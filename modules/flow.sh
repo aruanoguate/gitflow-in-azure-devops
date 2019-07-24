@@ -46,9 +46,14 @@ function verifyUpToDateBranch() {
     fi
 }
 
-    if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; then
-        showError "The branch should be up to date with its upstream"
-        git status
-        exit 1
+function tryRebase() {
+    local BRANCHTOREBASE=$1;
+    git rebase $BRANCHTOREBASE;
+    local REBASE_SUCCESS=$?;
+    if [[ $REBASE_SUCCESS -ne 0 ]];
+    then
+        git rebase --abort;
+        showError "Not able to automatically rebase '$BRANCHTOREBASE', rebase manually and then publish again";
+        exit 1;
     fi
 }
