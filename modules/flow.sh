@@ -28,3 +28,18 @@ function verifyBranchType() {
         exit 1
     fi
 }
+
+function verifyUpToDateBranch() {
+    local BRANCH="$(getBranchName)"
+
+    git fetch origin $BRANCH
+
+    local LAST_LOCAL_COMMIT=$(git rev-parse HEAD)
+    local LAST_UPSTREAM_COMMIT=$(git rev-parse @{u})
+    
+    if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; then
+        showError "The branch should be up to date with its upstream"
+        git status
+        exit 1
+    fi
+}

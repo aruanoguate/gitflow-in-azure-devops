@@ -2,20 +2,12 @@
 
 . $HOME/gitflow/modules/flow.sh
 
-verifyBranchType "feature"
-
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-git fetch origin $BRANCH
-LAST_LOCAL_COMMIT=$(git rev-parse HEAD)
-LAST_UPSTREAM_COMMIT=$(git rev-parse @{u})
-if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; then
-  showError "The branch should be up to date with its upstream"
-  git status
-  exit 1
-fi
+verifyBranchType "feature";
+verifyUpToDateBranch;
 
 updateDevelopBranch;
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git checkout $BRANCH
 git rebase develop
 REBASE_SUCCESS=$?
