@@ -8,9 +8,7 @@ if [[ -z "$BRANCH" ]]; then
   exit 1;
 fi
 
-git fetch origin develop
-git checkout develop
-git reset --hard origin/develop
+updateDevelopBranch;
 
 git branch feature/$BRANCH develop
 git checkout feature/$BRANCH

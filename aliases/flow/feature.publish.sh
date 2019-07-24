@@ -17,9 +17,7 @@ if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; then
   exit 1
 fi
 
-git fetch origin develop
-git checkout develop
-git reset --hard origin/develop
+updateDevelopBranch;
 
 git checkout $BRANCH
 git rebase develop
