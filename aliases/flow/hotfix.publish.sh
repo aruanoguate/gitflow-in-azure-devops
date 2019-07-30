@@ -10,20 +10,20 @@ verifyUpToDateBranch;
 # Process
 forceBranchUpdateFromOrigin "master";
 tryRebase "master";
-BRANCH="$(getBranchName)";
-git push --force origin $BRANCH;
-HOTFIX=${BRANCH/#"hotfix/"/""};
+git push --force;
+HOTFIX_NAME="$(getBranchNameWithoutPrefix)";
 git pr create \
+  --delete-source-branch \
   --open \
   --output table \
   --reviewers "CompIQ Team" \
   --target-branch master \
-  --title "Hotfix completed: $HOTFIX";
+  --title "Hotfix completed: $HOTFIX_NAME";
 git pr create \
-  --open \
+  --delete-source-branch \
   --output table \
   --reviewers "CompIQ Team" \
   --target-branch develop \
-  --title "Hotfix completed: $HOTFIX";
+  --title "Hotfix completed: $HOTFIX_NAME";
 git checkout develop;
 showSuccess "The hotfix branch was published";
