@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Imports
+. $HOME/gitflow/modules/flow.sh;
+
+# Validations
+verifyInGitRepo;
+
 # To remove all branches already merged with the exception of master and develop
 git fetch --all
 git remote prune origin
