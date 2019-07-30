@@ -6,6 +6,10 @@ function showWarning() {
     echo -e "\e[33mWARNING: $1\e[0m";
 }
 
+function showSuccess() {
+    echo -e "\e[32mSUCCESS: $1\e[0m";
+}
+
 function getBranchName() {
     local BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD);
     echo "$BRANCH_NAME";

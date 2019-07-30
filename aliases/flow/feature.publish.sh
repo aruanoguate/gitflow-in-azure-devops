@@ -21,4 +21,4 @@ git pr create \
   --target-branch develop \
   --title "Feature completed: $FEATURE";
 git checkout develop;
-  
+showSuccess "The feature branch was published";

@@ -14,3 +14,4 @@ forceBranchUpdateFromOrigin "develop";
 git branch feature/$BRANCH develop;
 git checkout feature/$BRANCH;
 git push --set-upstream origin feature/$BRANCH;
+showSuccess "The new feature branch was created";
