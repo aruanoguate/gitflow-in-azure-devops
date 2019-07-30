@@ -4,6 +4,7 @@
 . $HOME/gitflow/modules/flow.sh
 
 # Validations
+verifyInGitRepo;
 verifyBranchType "feature";
 verifyUpToDateBranch;
 

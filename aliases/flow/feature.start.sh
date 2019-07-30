@@ -7,6 +7,7 @@ BRANCH=$1;
 . $HOME/gitflow/modules/flow.sh;
 
 # Validations
+verifyInGitRepo;
 verifyBranchNameProvided $BRANCH;
 
 # Process
