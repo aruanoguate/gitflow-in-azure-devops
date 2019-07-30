@@ -47,12 +47,12 @@ function verifyBranchNameProvided() {
 }
 
 function forceBranchUpdateFromOrigin() {
-    local CURRENTBRANCH="$(getBranchName)";
-    local BRANCHTOUPDATE=$1;
-    git fetch origin $BRANCHTOUPDATE;
-    git checkout $BRANCHTOUPDATE;
-    git reset --hard origin/$BRANCHTOUPDATE;
-    git checkout $CURRENTBRANCH;
+    local BRANCH_CURRENT="$(getBranchName)";
+    local BRANCH_TO_UPDATE=$1;
+    git fetch origin $BRANCH_TO_UPDATE;
+    git checkout $BRANCH_TO_UPDATE;
+    git reset --hard origin/$BRANCH_TO_UPDATE;
+    git checkout $BRANCH_CURRENT;
 }
 
 function tryRebase() {
