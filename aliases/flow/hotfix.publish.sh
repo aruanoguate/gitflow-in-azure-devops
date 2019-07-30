@@ -26,3 +26,4 @@ git pr create \
   --target-branch develop \
   --title "Hotfix completed: $HOTFIX";
 git checkout develop;
+showSuccess "The hotfix branch was published";
