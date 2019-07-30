@@ -32,7 +32,7 @@ function verifyUpToDateBranch() {
     
     if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; 
     then
-        showError "The branch should be up to date with its upstream";
+        showError "The branch should be up to date with its origin";
         git status;
         exit 1;
     fi
