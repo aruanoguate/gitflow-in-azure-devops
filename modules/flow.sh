@@ -23,6 +23,13 @@ function getBranchNameWithoutPrefix() {
     echo "$BRANCH_NAME_WITHOUT_PREFIX";
 }
 
+function verifyInGitRepo() {
+    if ! git rev-parse --git-dir >/dev/null 2>&1; then
+		showError "This can only be executed on a valid Git repository";
+        exit 1;
+	fi
+}
+
 function verifyBranchType() {
     local BRANCH_TYPE=$1;
     local BRANCH_NAME="$(getBranchName)";
