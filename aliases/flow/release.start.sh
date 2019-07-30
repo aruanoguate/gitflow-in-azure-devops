@@ -12,7 +12,7 @@ verifyBranchNameProvided $BRANCH;
 
 # Process
 forceBranchUpdateFromOrigin "develop";
-git branch feature/$BRANCH develop;
-git checkout feature/$BRANCH;
-git push --set-upstream origin feature/$BRANCH;
-showSuccess "The new feature branch was created";
+git branch release/$BRANCH develop;
+git checkout release/$BRANCH;
+git push --set-upstream origin release/$BRANCH;
+showSuccess "The new release branch was created";
