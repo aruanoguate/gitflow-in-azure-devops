@@ -32,8 +32,8 @@ function verifyUpToDateBranch() {
     
     if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; 
     then
-        showError "The branch $BRANCH_NAME should be up to date with its origin counterpart";
         git status;
+        showError "The branch $BRANCH_NAME should be up to date with its origin counterpart";
         exit 1;
     fi
 }
