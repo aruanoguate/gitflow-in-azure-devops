@@ -15,6 +15,14 @@ function getBranchName() {
     echo "$BRANCH_NAME";
 }
 
+function getBranchNameWithoutPrefix() {
+    local BRANCH_NAME_WITHOUT_PREFIX="$(getBranchName)";
+    local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"feature/"/""};
+    local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"hotfix/"/""};
+    local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"release/"/""};
+    echo "$BRANCH_NAME_WITHOUT_PREFIX";
+}
+
 function verifyBranchType() {
     local BRANCH_TYPE=$1;
     local BRANCH_NAME="$(getBranchName)";
