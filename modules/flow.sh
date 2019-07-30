@@ -7,15 +7,15 @@ function showWarning() {
 }
 
 function getBranchName() {
-    local BRANCH=$(git rev-parse --abbrev-ref HEAD);
-    echo "$BRANCH";
+    local BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD);
+    echo "$BRANCH_NAME";
 }
 
 function verifyBranchType() {
     local BRANCH_TYPE=$1;
-    local BRANCH="$(getBranchName)";
+    local BRANCH_NAME="$(getBranchName)";
     
-    if [[ "$BRANCH" != "$BRANCH_TYPE/"* ]]; 
+    if [[ "$BRANCH_NAME" != "$BRANCH_TYPE/"* ]]; 
     then
         showError "This can only be executed on $BRANCH_TYPE branches";
         exit 1;
@@ -23,24 +23,24 @@ function verifyBranchType() {
 }
 
 function verifyUpToDateBranch() {
-    local BRANCH="$(getBranchName)";
+    local BRANCH_NAME="$(getBranchName)";
 
-    git fetch origin $BRANCH;
+    git fetch origin $BRANCH_NAME;
 
     local LAST_LOCAL_COMMIT=$(git rev-parse HEAD);
     local LAST_UPSTREAM_COMMIT=$(git rev-parse @{u});
     
     if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; 
     then
-        showError "The branch should be up to date with its origin";
+        showError "The branch $BRANCH_NAME should be up to date with its origin counterpart";
         git status;
         exit 1;
     fi
 }
 
 function verifyBranchNameProvided() {
-    local BRANCHNAME=$1;
-    if [[ -z "$BRANCHNAME" ]]; then
+    local BRANCH_NAME=$1;
+    if [[ -z "$BRANCH_NAME" ]]; then
         showError "A name for the branch needs to be provided";
         exit 1;
     fi
