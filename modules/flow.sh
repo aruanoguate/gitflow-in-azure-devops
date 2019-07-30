@@ -12,12 +12,12 @@ function getBranchName() {
 }
 
 function verifyBranchType() {
-    local BRANCHTYPE=$1;
+    local BRANCH_TYPE=$1;
     local BRANCH="$(getBranchName)";
     
-    if [[ "$BRANCH" != "$BRANCHTYPE/"* ]]; 
+    if [[ "$BRANCH" != "$BRANCH_TYPE/"* ]]; 
     then
-        showError "This can only be executed on $BRANCHTYPE branches";
+        showError "This can only be executed on $BRANCH_TYPE branches";
         exit 1;
     fi
 }
