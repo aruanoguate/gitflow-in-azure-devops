@@ -69,3 +69,10 @@ In cases when you're certain that no modifications are needed before the release
 git flow.release.all <release-name>
 git fra <release-name>
 ```
+
+## Other utilities
+
+When you want to do a local cleanup and remove all the branches already merged to `develop` and `master`, you can run the below command:
+```console
+git flow.general.clean
+```
