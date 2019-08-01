@@ -33,3 +33,18 @@ You can publish a feature branch to `develop` by running any of the below comman
 git flow.feature.publish
 git ffp
 ```
+
+
+## Hotfix Branches
+
+You can create a new hotfix branch by running any of the below commands:
+```console
+git flow.hotfix.start <hotfix-name>
+git fhs <hotfix-name>
+```
+
+You can publish a hotfix branch to `develop` and `master` by running any of the below commands on a checked out hotfix branch, which will create two *pull request* on the server:
+```console
+git flow.hotfix.publish
+git fhp
+```
