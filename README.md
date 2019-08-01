@@ -19,4 +19,17 @@ The use of this toolset asumes you have completed the below steps:
 
 
 # Usage
-TO DO
+
+## Feature Branches
+
+You can create a new feature branch by running any of the below commands:
+```console
+git flow.feature.start <feature-name>
+git ffs <feature-name>
+```
+
+You can publish a feature branch to `develop` by running any of the below commands on a checked out feature branch, which will create a *pull request* on the server:
+```console
+git flow.feature.publish
+git ffp
+```
