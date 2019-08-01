@@ -12,7 +12,7 @@ The use of this toolset asumes you have completed the below steps:
 
 # Installation
 1. Clone the repository
-2. Move to the main directory of the repo
+2. Move to the repo's main directory
 3. Run `install.bat`
 
 
