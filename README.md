@@ -9,7 +9,9 @@ The use of this toolset asumes you have completed the below steps:
 4. Execute this command `vsts configure --use-git-aliases yes`
 
 # Installation
-1. Run `install.bat`
+1. Clone the repository
+2. Move to the main directory of the repo
+3. Run `install.bat`
 
 
 # Usage
