@@ -1,7 +1,9 @@
 # Introduction 
-This tool allows a team to implement the **GitFlow** methodology for branch management along with code review practices enforce by the usage of *Pull requests*. Since the *Pull requests* are not a native **git** feature, we rely on **Azure DevOps** or **Team Foundation Server** to handle them. 
+This tool allows a team to implement the **GitFlow** methodology for branch management along with code review practices enforce by the usage of *Pull requests*. 
 
-Also, please consider this tool only works on *Windows* operative system.
+Since the *Pull requests* are not a native **git** feature, we rely on **Azure DevOps** or **Team Foundation Server** to handle them. Also, please consider this tool only works on **Windows** operative system.
+
+If you want to learn more about the **GitFlow** methodology, you can follow [this link](https://nvie.com/posts/a-successful-git-branching-model/).
 
 # Prerequisites
 The use of this toolset asumes you have completed the below steps:
