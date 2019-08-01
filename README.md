@@ -1,5 +1,5 @@
 # Introduction 
-This repository includes all the git aliases needed to handle the GitFlow methodology along with Pull Requests on Azure DevOps.
+This project allows a team to implement the **GitFlow** methodology for branch management along with code review practices enforce by the usage of *Pull requests*. Since the *Pull requests* are not a native **git** feature, we rely on **Azure DevOps** or **Team Foundation Server** to handle them.
 
 # Prerequisites
 This toolset asumes you have completed the below steps:
