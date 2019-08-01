@@ -5,7 +5,7 @@ xcopy /E /Y aliases %userprofile%\gitflow\aliases\
 pushd %userprofile%\gitflow\
 FOR /f %%A IN ('dir /b aliases') DO (
     FOR /f %%S IN ('dir /b aliases\%%A\*.sh') DO (
-        CALL :PROCESS_SHELL %%A %%S
+        CALL :PROCESS_ALIAS %%A %%S
     )
     FOR /f %%B IN ('dir /b aliases\%%A\*.bat') DO (
         CALL :PROCESS_BAT %%A %%B
@@ -14,7 +14,7 @@ FOR /f %%A IN ('dir /b aliases') DO (
 popd
 GOTO :eof
 
-:PROCESS_SHELL
+:PROCESS_ALIAS
     SET aliasName=%1.%2
     SET aliasName=%aliasName:.sh=%
     SET filename='%CD%\aliases\%1\%2'
