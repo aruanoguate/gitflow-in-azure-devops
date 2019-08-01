@@ -1,0 +1,7 @@
+git config --global alias.ffp "!func() { git flow.feature.publish $@; }; func"
+git config --global alias.ffs "!func() { git flow.feature.start $@; }; func"
+git config --global alias.fhp "!func() { git flow.hotfix.publish $@; }; func"
+git config --global alias.fhs "!func() { git flow.hotfix.start $@; }; func"
+git config --global alias.fra "!func() { git flow.release.all $@; }; func"
+git config --global alias.frp "!func() { git flow.release.publish $@; }; func"
+git config --global alias.frs "!func() { git flow.release.start $@; }; func"
