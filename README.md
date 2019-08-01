@@ -48,3 +48,24 @@ You can publish a hotfix branch to `develop` and `master` by running any of the 
 git flow.hotfix.publish
 git fhp
 ```
+
+
+## Release Branches
+
+You can create a new release branch by running any of the below commands:
+```console
+git flow.release.start <release-name>
+git frs <release-name>
+```
+
+You can publish a release branch to `develop` and `master` by running any of the below commands on a checked out release branch, which will create two *pull request* on the server:
+```console
+git flow.release.publish
+git frp
+```
+
+In cases when you're certain that no modifications are needed before the release, you can perform the two above actions at the same time by running any of the below commands:
+```console
+git flow.release.all <release-name>
+git fra <release-name>
+```
