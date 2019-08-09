@@ -1,21 +1,26 @@
-function showError() {
+function showError()
+{
     echo -e "\e[31mERROR: $1\e[0m";
 }
 
-function showWarning() {
+function showWarning()
+{
     echo -e "\e[33mWARNING: $1\e[0m";
 }
 
-function showSuccess() {
+function showSuccess()
+{
     echo -e "\e[32mSUCCESS: $1\e[0m";
 }
 
-function getBranchName() {
+function getBranchName()
+{
     local BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD);
     echo "$BRANCH_NAME";
 }
 
-function getBranchNameWithoutPrefix() {
+function getBranchNameWithoutPrefix()
+{
     local BRANCH_NAME_WITHOUT_PREFIX="$(getBranchName)";
     local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"feature/"/""};
     local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"hotfix/"/""};
@@ -23,14 +28,17 @@ function getBranchNameWithoutPrefix() {
     echo "$BRANCH_NAME_WITHOUT_PREFIX";
 }
 
-function verifyInGitRepo() {
-    if ! git rev-parse --git-dir >/dev/null 2>&1; then
+function verifyInGitRepo()
+{
+    if ! git rev-parse --git-dir >/dev/null 2>&1; 
+    then
 		showError "This can only be executed on a valid Git repository";
         exit 1;
 	fi
 }
 
-function verifyBranchType() {
+function verifyBranchType()
+{
     local BRANCH_TYPE=$1;
     local BRANCH_NAME="$(getBranchName)";
     
@@ -41,7 +49,8 @@ function verifyBranchType() {
     fi
 }
 
-function verifyUpToDateBranch() {
+function verifyUpToDateBranch()
+{
     local BRANCH_NAME="$(getBranchName)";
 
     git fetch origin $BRANCH_NAME;
@@ -57,15 +66,18 @@ function verifyUpToDateBranch() {
     fi
 }
 
-function verifyBranchNameProvided() {
+function verifyBranchNameProvided()
+{
     local BRANCH_NAME=$1;
-    if [[ -z "$BRANCH_NAME" ]]; then
+    if [[ -z "$BRANCH_NAME" ]]; 
+    then
         showError "A name for the branch needs to be provided";
         exit 1;
     fi
 }
 
-function forceBranchUpdateFromOrigin() {
+function forceBranchUpdateFromOrigin()
+{
     local BRANCH_CURRENT="$(getBranchName)";
     local BRANCH_TO_UPDATE=$1;
     git fetch origin $BRANCH_TO_UPDATE;
@@ -74,7 +86,8 @@ function forceBranchUpdateFromOrigin() {
     git checkout $BRANCH_CURRENT;
 }
 
-function tryRebase() {
+function tryRebase()
+{
     local BRANCH_TO_REBASE=$1;
     git rebase $BRANCH_TO_REBASE;
     local REBASE_SUCCESS=$?;
