@@ -20,6 +20,15 @@ The use of this toolset asumes you have completed the below steps:
 
 # Usage
 
+## Repository initialization
+
+To configure a repository to use this tool, you need to execute any of the below commands, this should be done only once per repository.
+```console
+git flow.init
+git fi
+```
+
+
 ## Feature Branches
 
 You can create a new feature branch by running any of the below commands:
