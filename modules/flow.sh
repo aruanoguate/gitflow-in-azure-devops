@@ -97,7 +97,7 @@ function verifyNoUncommitedChanges()
         exit 1;
 	fi
 
-    git add -N .
+    git add --intent-to-add .
     git diff --no-ext-diff --ignore-submodules --quiet --exit-code;
     local VERIFY_NONSTAGED_CHANGES=$?;
     if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
