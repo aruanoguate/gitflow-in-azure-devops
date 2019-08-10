@@ -1,1 +1,1 @@
-cat $HOME/gitflow/README.md
+vim -M $HOME/gitflow/README.md
