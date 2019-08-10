@@ -90,8 +90,8 @@ function tryRebase()
 {
     local BRANCH_TO_REBASE=$1;
     git rebase $BRANCH_TO_REBASE;
-    local REBASE_SUCCESS=$?;
-    if [[ $REBASE_SUCCESS -ne 0 ]];
+    local REBASE_RESULT=$?;
+    if [[ $REBASE_RESULT -ne 0 ]];
     then
         git rebase --abort;
         showError "Not able to automatically rebase '$BRANCH_TO_REBASE', rebase manually and then publish again";
