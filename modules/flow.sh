@@ -79,6 +79,25 @@ function verifyBranchNameProvided()
     fi
 }
 
+function verifyNoUncommitedChanges()
+{
+    git diff --no-ext-diff --ignore-submodules --quiet --exit-code;
+    local VERIFY_NONSTAGED_CHANGES=$?;
+    if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
+    then
+        showError "Non-staged changes where found, stage and commit them before continue";
+        exit 1;
+    fi
+
+    git diff --staged --no-ext-diff --ignore-submodules --quiet --exit-code;
+    local VERIFY_STAGED_CHANGES=$?;
+	if  [[ $VERIFY_STAGED_CHANGES -ne 0 ]]; 
+    then
+        showError "Staged changes where found, commit them before continue";
+        exit 1;
+	fi
+}
+
 function forceBranchUpdateFromOrigin()
 {
     local BRANCH_CURRENT="$(getBranchName)";
