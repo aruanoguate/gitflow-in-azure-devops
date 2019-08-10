@@ -102,6 +102,7 @@ function verifyNoUncommitedChanges()
     local VERIFY_NONSTAGED_CHANGES=$?;
     if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
     then
+        git reset;
         showError "Non-tracked changes where found, stage and commit them before continue";
         exit 1;
     fi
