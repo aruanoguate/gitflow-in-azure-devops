@@ -1,21 +1,26 @@
-function showError() {
+function showError()
+{
     echo -e "\e[31mERROR: $1\e[0m";
 }
 
-function showWarning() {
+function showWarning()
+{
     echo -e "\e[33mWARNING: $1\e[0m";
 }
 
-function showSuccess() {
+function showSuccess()
+{
     echo -e "\e[32mSUCCESS: $1\e[0m";
 }
 
-function getBranchName() {
+function getBranchName()
+{
     local BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD);
     echo "$BRANCH_NAME";
 }
 
-function getBranchNameWithoutPrefix() {
+function getBranchNameWithoutPrefix()
+{
     local BRANCH_NAME_WITHOUT_PREFIX="$(getBranchName)";
     local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"feature/"/""};
     local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"hotfix/"/""};
@@ -23,14 +28,20 @@ function getBranchNameWithoutPrefix() {
     echo "$BRANCH_NAME_WITHOUT_PREFIX";
 }
 
-function verifyInGitRepo() {
-    if ! git rev-parse --git-dir >/dev/null 2>&1; then
+function verifyInGitRepo()
+{
+    git rev-parse --git-dir >/dev/null 2>&1;
+    local REPO_REVISION_RESULT=$?;
+
+    if [[ $REPO_REVISION_RESULT -ne 0 ]]; 
+    then
 		showError "This can only be executed on a valid Git repository";
         exit 1;
 	fi
 }
 
-function verifyBranchType() {
+function verifyBranchType()
+{
     local BRANCH_TYPE=$1;
     local BRANCH_NAME="$(getBranchName)";
     
@@ -41,7 +52,20 @@ function verifyBranchType() {
     fi
 }
 
-function verifyUpToDateBranch() {
+function verifyCurrentBranch()
+{
+    local DESIRED_BRANCH=$1;
+    local CURRENT_BRANCH="$(getBranchName)";
+    
+    if [[ "$CURRENT_BRANCH" != "$DESIRED_BRANCH" ]]; 
+    then
+        showError "This can only be executed on $DESIRED_BRANCH branch";
+        exit 1;
+    fi
+}
+
+function verifyUpToDateBranch()
+{
     local BRANCH_NAME="$(getBranchName)";
 
     git fetch origin $BRANCH_NAME;
@@ -57,15 +81,48 @@ function verifyUpToDateBranch() {
     fi
 }
 
-function verifyBranchNameProvided() {
+function verifyBranchNameProvided()
+{
     local BRANCH_NAME=$1;
-    if [[ -z "$BRANCH_NAME" ]]; then
+    if [[ -z "$BRANCH_NAME" ]]; 
+    then
         showError "A name for the branch needs to be provided";
         exit 1;
     fi
 }
 
-function forceBranchUpdateFromOrigin() {
+function verifyNoUncommitedChanges()
+{
+    git diff --no-ext-diff --ignore-submodules --quiet --exit-code;
+    local VERIFY_NONSTAGED_CHANGES=$?;
+    if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
+    then
+        showError "Non-staged changes where found, stage and commit them before continue";
+        exit 1;
+    fi
+
+    git diff --staged --no-ext-diff --ignore-submodules --quiet --exit-code;
+    local VERIFY_STAGED_CHANGES=$?;
+	if  [[ $VERIFY_STAGED_CHANGES -ne 0 ]]; 
+    then
+        showError "Staged changes where found, commit them before continue";
+        exit 1;
+	fi
+
+    git add --intent-to-add .
+    git diff --no-ext-diff --ignore-submodules --quiet --exit-code;
+    local VERIFY_NONSTAGED_CHANGES=$?;
+    if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
+    then
+        git reset;
+        showError "Non-tracked changes where found, stage and commit them before continue";
+        exit 1;
+    fi
+
+}
+
+function forceBranchUpdateFromOrigin()
+{
     local BRANCH_CURRENT="$(getBranchName)";
     local BRANCH_TO_UPDATE=$1;
     git fetch origin $BRANCH_TO_UPDATE;
@@ -74,14 +131,31 @@ function forceBranchUpdateFromOrigin() {
     git checkout $BRANCH_CURRENT;
 }
 
-function tryRebase() {
+function tryRebase()
+{
     local BRANCH_TO_REBASE=$1;
     git rebase $BRANCH_TO_REBASE;
-    local REBASE_SUCCESS=$?;
-    if [[ $REBASE_SUCCESS -ne 0 ]];
+    local REBASE_RESULT=$?;
+    if [[ $REBASE_RESULT -ne 0 ]];
     then
         git rebase --abort;
         showError "Not able to automatically rebase '$BRANCH_TO_REBASE', rebase manually and then publish again";
         exit 1;
+    fi
+}
+
+function tryCreateBranch()
+{
+    local BRANCH_TO_CREATE=$1;
+    local BRANCH_TO_COPY=$2;
+
+    git rev-parse --verify $BRANCH_TO_CREATE;
+    local BRANCH_VERIFICATION_RESULT=$?;
+
+    if [[ $BRANCH_VERIFICATION_RESULT -ne 0 ]];
+    then
+        git branch $BRANCH_TO_CREATE $BRANCH_TO_COPY;
+    else
+        showWarning "Branch '$BRANCH_TO_CREATE' already exists, it was not modified";
     fi
 }

@@ -6,6 +6,7 @@
 # Validations
 verifyInGitRepo;
 verifyBranchType "feature";
+verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
 # Process

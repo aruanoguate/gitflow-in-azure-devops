@@ -6,6 +6,7 @@
 # Validations
 verifyInGitRepo;
 verifyBranchType "hotfix";
+verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
 # Process
