@@ -74,5 +74,5 @@ git fra <release-name>
 
 When you want to do a local cleanup and remove all the branches already merged to `develop` and `master`, you can run the below command:
 ```console
-git flow.general.clean
+git general.clean
 ```
