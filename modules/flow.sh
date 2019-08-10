@@ -96,6 +96,16 @@ function verifyNoUncommitedChanges()
         showError "Staged changes where found, commit them before continue";
         exit 1;
 	fi
+
+    git add -N .
+    git diff --no-ext-diff --ignore-submodules --quiet --exit-code;
+    local VERIFY_NONSTAGED_CHANGES=$?;
+    if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
+    then
+        showError "Non-tracked changes where found, stage and commit them before continue";
+        exit 1;
+    fi
+
 }
 
 function forceBranchUpdateFromOrigin()
