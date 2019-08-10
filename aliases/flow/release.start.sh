@@ -9,6 +9,7 @@ BRANCH=$1;
 # Validations
 verifyInGitRepo;
 verifyBranchNameProvided $BRANCH;
+verifyNoUncommitedChanges;
 
 # Process
 forceBranchUpdateFromOrigin "develop";
