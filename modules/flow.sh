@@ -30,7 +30,10 @@ function getBranchNameWithoutPrefix()
 
 function verifyInGitRepo()
 {
-    if ! git rev-parse --git-dir >/dev/null 2>&1; 
+    git rev-parse --git-dir >/dev/null 2>&1;
+    local REPO_REVISION_RESULT=$?;
+
+    if [[ $REPO_REVISION_RESULT -ne 0 ]]; 
     then
 		showError "This can only be executed on a valid Git repository";
         exit 1;
