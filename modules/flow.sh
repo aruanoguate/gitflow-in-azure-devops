@@ -52,6 +52,18 @@ function verifyBranchType()
     fi
 }
 
+function verifyCurrentBranch()
+{
+    local DESIRED_BRANCH=$1;
+    local CURRENT_BRANCH="$(getBranchName)";
+    
+    if [[ "$CURRENT_BRANCH" != "$DESIRED_BRANCH" ]]; 
+    then
+        showError "This can only be executed on $DESIRED_BRANCH branch";
+        exit 1;
+    fi
+}
+
 function verifyUpToDateBranch()
 {
     local BRANCH_NAME="$(getBranchName)";
@@ -129,5 +141,21 @@ function tryRebase()
         git rebase --abort;
         showError "Not able to automatically rebase '$BRANCH_TO_REBASE', rebase manually and then publish again";
         exit 1;
+    fi
+}
+
+function tryCreateBranch()
+{
+    local BRANCH_TO_CREATE=$1;
+    local BRANCH_TO_COPY=$2;
+
+    git rev-parse --verify $BRANCH_TO_CREATE;
+    local BRANCH_VERIFICATION_RESULT=$?;
+
+    if [[ $BRANCH_VERIFICATION_RESULT -ne 0 ]];
+    then
+        git branch $BRANCH_TO_CREATE $BRANCH_TO_COPY;
+    else
+        showWarning "Branch '$BRANCH_TO_CREATE' already exists, it was not modified";
     fi
 }

@@ -20,6 +20,15 @@ The use of this toolset asumes you have completed the below steps:
 
 # Usage
 
+## Repository initialization
+
+To configure a repository to use this tool, you need to execute any of the below commands, this should be done only once per repository:
+```console
+git flow.init
+git fi
+```
+
+
 ## Feature Branches
 
 You can create a new feature branch by running any of the below commands:
@@ -28,7 +37,7 @@ git flow.feature.start <feature-name>
 git ffs <feature-name>
 ```
 
-You can publish a feature branch to `develop` by running any of the below commands on a checked out feature branch, which will create a *pull request* on the server:
+When you're done with your changes, you can publish the branch to `develop` by running any of the below commands on a checked out feature branch, this will create a *pull request* on the server:
 ```console
 git flow.feature.publish
 git ffp
@@ -43,7 +52,7 @@ git flow.hotfix.start <hotfix-name>
 git fhs <hotfix-name>
 ```
 
-You can publish a hotfix branch to `develop` and `master` by running any of the below commands on a checked out hotfix branch, which will create two *pull request* on the server:
+When you're done with your changes, you can publish the branch to `develop` and `master` by running any of the below commands on a checked out hotfix branch, this will create two *pull request* on the server:
 ```console
 git flow.hotfix.publish
 git fhp
@@ -58,13 +67,13 @@ git flow.release.start <release-name>
 git frs <release-name>
 ```
 
-You can publish a release branch to `develop` and `master` by running any of the below commands on a checked out release branch, which will create two *pull request* on the server:
+When you're done with your adjustments, you can publish the branch to `develop` and `master` by running any of the below commands on a checked out release branch, this will create two *pull request* on the server:
 ```console
 git flow.release.publish
 git frp
 ```
 
-In cases when you're certain that no modifications are needed before the release, you can perform the two above actions at the same time by running any of the below commands:
+In cases when you're certain that no adjustments are needed before the release, you can perform the two above actions at the same time by running any of the below commands:
 ```console
 git flow.release.all <release-name>
 git fra <release-name>
