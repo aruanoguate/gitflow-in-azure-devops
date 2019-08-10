@@ -52,6 +52,18 @@ function verifyBranchType()
     fi
 }
 
+function verifyCurrentBranch()
+{
+    local DESIRED_BRANCH=$1;
+    local CURRENT_BRANCH="$(getBranchName)";
+    
+    if [[ "$CURRENT_BRANCH" != "$DESIRED_BRANCH" ]]; 
+    then
+        showError "This can only be executed on $DESIRED_BRANCH branch";
+        exit 1;
+    fi
+}
+
 function verifyUpToDateBranch()
 {
     local BRANCH_NAME="$(getBranchName)";
