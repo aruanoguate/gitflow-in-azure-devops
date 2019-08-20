@@ -34,3 +34,5 @@ git fra <release-name>
 
 ### Clean local environment
 git general.clean
+
+# To close this help press ** Ctrl + X **
