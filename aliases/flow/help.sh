@@ -1,1 +1,1 @@
-nano -v -x $HOME/gitflow/HELP.md
+nano -v -x -m $HOME/gitflow/HELP.md
