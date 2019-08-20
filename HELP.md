@@ -1,4 +1,4 @@
-# GitFlow for AzureDevOps utility
+## To close this help press ** Ctrl + X **
 
 ## Repository initialization
 git flow.init
