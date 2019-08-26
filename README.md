@@ -1,26 +1,28 @@
-# Introduction 
+# GitFlow for Azure DevOps
+
+## Introduction 
 This tool allows a team to implement the **GitFlow** methodology for branch management along with code review practices enforce by the usage of *pull requests*. 
 
 Since the *pull requests* are not a native **git** feature, we rely on **Azure DevOps** or **Team Foundation Server** to handle them. Also, please consider this tool only works on **Windows** operative system.
 
 If you want to learn more about the **GitFlow** methodology, you can follow [this link](https://nvie.com/posts/a-successful-git-branching-model/).
 
-# Prerequisites
+## Prerequisites
 The use of this toolset asumes you have completed the below steps:
 1. Install the latest [VSTS CLI](https://docs.microsoft.com/en-us/cli/vsts/install?view=vsts-cli-latest)
 2. Create a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops)
 3. Setup your [credentials](https://docs.microsoft.com/en-us/cli/vsts/authenticate?view=vsts-cli-latest) on VSTS CLI
 4. Execute this command `vsts configure --use-git-aliases yes`
 
-# Installation
+## Installation
 1. Clone the repository
 2. Move to the repo's main directory
 3. Run `install.bat`
 
 
-# Usage
+## Usage
 
-## Repository initialization
+### Repository initialization
 
 To configure a repository to use this tool, you need to execute any of the below commands, this should be done only once per repository:
 ```console
@@ -29,7 +31,7 @@ git fi
 ```
 
 
-## Feature Branches
+### Feature Branches
 
 You can create a new feature branch by running any of the below commands:
 ```console
@@ -44,7 +46,7 @@ git ffp
 ```
 
 
-## Hotfix Branches
+### Hotfix Branches
 
 You can create a new hotfix branch by running any of the below commands:
 ```console
@@ -59,7 +61,7 @@ git fhp
 ```
 
 
-## Release Branches
+### Release Branches
 
 You can create a new release branch by running any of the below commands:
 ```console
@@ -79,7 +81,7 @@ git flow.release.all <release-name>
 git fra <release-name>
 ```
 
-## Other utilities
+### Other utilities
 
 When you want to do a local cleanup and remove all the branches already merged to `develop` and `master`, you can run the below command:
 ```console
