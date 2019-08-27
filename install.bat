@@ -1,5 +1,7 @@
 ECHO OFF
 mkdir %userprofile%\gitflow\
+xcopy /E /Y HELP.md %userprofile%\gitflow\
+xcopy /E /Y config %userprofile%\gitflow\config\
 xcopy /E /Y modules %userprofile%\gitflow\modules\
 xcopy /E /Y aliases %userprofile%\gitflow\aliases\
 pushd %userprofile%\gitflow\

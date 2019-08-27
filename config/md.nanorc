@@ -1,0 +1,10 @@
+syntax "Markdown" "\.(md|mkd|mkdn|markdown)$"
+
+# Emphasis
+color green "(^|[[:space:]])(_[^ ][^_]*_|\*[^ ][^*]*\*)"
+
+# headlines
+color brightmagenta  "^#{1,6}.*"
+
+# code
+color yellow   "`[^`]*`|^ {4}[^-+*].*"
