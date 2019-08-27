@@ -26,8 +26,8 @@ The use of this toolset asumes you have completed the below steps:
 
 At any moment you can run any of the below commands to get a cheatsheet for the tool:
 ```console
-git flow.help
-git fh
+$ git flow.help
+$ git fh
 ```
 
 
@@ -35,8 +35,8 @@ git fh
 
 To configure a repository to use this tool, you need to execute any of the below commands, this should be done only once per repository:
 ```console
-git flow.init
-git fi
+$ git flow.init
+$ git fi
 ```
 
 
@@ -44,14 +44,14 @@ git fi
 
 You can create a new feature branch by running any of the below commands:
 ```console
-git flow.feature.start <feature-name>
-git ffs <feature-name>
+$ git flow.feature.start <feature-name>
+$ git ffs <feature-name>
 ```
 
 When you're done with your changes, you can publish the branch to `develop` by running any of the below commands on a checked out feature branch, this will create a *pull request* on the server:
 ```console
-git flow.feature.publish
-git ffp
+$ git flow.feature.publish
+$ git ffp
 ```
 
 
@@ -59,14 +59,14 @@ git ffp
 
 You can create a new hotfix branch by running any of the below commands:
 ```console
-git flow.hotfix.start <hotfix-name>
-git fhs <hotfix-name>
+$ git flow.hotfix.start <hotfix-name>
+$ git fhs <hotfix-name>
 ```
 
 When you're done with your changes, you can publish the branch to `develop` and `master` by running any of the below commands on a checked out hotfix branch, this will create two *pull request* on the server:
 ```console
-git flow.hotfix.publish
-git fhp
+$ git flow.hotfix.publish
+$ git fhp
 ```
 
 
@@ -74,25 +74,25 @@ git fhp
 
 You can create a new release branch by running any of the below commands:
 ```console
-git flow.release.start <release-name>
-git frs <release-name>
+$ git flow.release.start <release-name>
+$ git frs <release-name>
 ```
 
 When you're done with your adjustments, you can publish the branch to `develop` and `master` by running any of the below commands on a checked out release branch, this will create two *pull request* on the server:
 ```console
-git flow.release.publish
-git frp
+$ git flow.release.publish
+$ git frp
 ```
 
 In cases when you're certain that no adjustments are needed before the release, you can perform the two above actions at the same time by running any of the below commands:
 ```console
-git flow.release.all <release-name>
-git fra <release-name>
+$ git flow.release.all <release-name>
+$ git fra <release-name>
 ```
 
 ### Other utilities
 
 When you want to do a local cleanup and remove all the branches already merged to `develop` and `master`, you can run the below command:
 ```console
-git general.clean
+$ git general.clean
 ```
