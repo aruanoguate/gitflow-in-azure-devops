@@ -1,5 +1,7 @@
 # GitFlow for Azure DevOps
 
+ ** To close press Ctrl + X **
+
 ### Get help
 git flow.help
 git fh
@@ -39,4 +41,4 @@ git fra `release-name`
 ## Clean local environment
 git general.clean
 
- ** To close this help press Ctrl + X **
+ ** To close press Ctrl + X **
