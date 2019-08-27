@@ -1,6 +1,8 @@
 # GitFlow for Azure DevOps
 
- ** To close this help press Ctrl + X **
+### Get help
+git flow.help
+git fh
 
 ## Repository initialization
 git flow.init
