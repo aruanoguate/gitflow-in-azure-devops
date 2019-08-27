@@ -22,6 +22,15 @@ The use of this toolset asumes you have completed the below steps:
 
 ## Usage
 
+### Get help
+
+At any moment you can run any of the below commands to get a cheatsheet for the tool:
+```console
+git flow.help
+git fh
+```
+
+
 ### Repository initialization
 
 To configure a repository to use this tool, you need to execute any of the below commands, this should be done only once per repository:
