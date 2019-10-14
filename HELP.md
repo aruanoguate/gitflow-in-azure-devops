@@ -41,4 +41,7 @@ git fra `release-name`
 ## Clean local environment
 git general.clean
 
+## Force .gitignore rules
+git general.ignore.force
+
  ** To close press Ctrl + X **
