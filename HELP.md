@@ -40,8 +40,10 @@ git fra `release-name`
 
 ## Clean local environment
 git general.clean
+git gcl
 
 ## Force .gitignore rules
 git general.ignore.force
+git gif
 
  ** To close press Ctrl + X **
