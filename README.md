@@ -96,3 +96,8 @@ When you want to do a local cleanup and remove all the branches already merged t
 ```console
 $ git general.clean
 ```
+
+When you want to force the application of the rules in the .gitignore file on an existing repository, you can run the below command:
+```console
+$ git general.ignore.force
+```
