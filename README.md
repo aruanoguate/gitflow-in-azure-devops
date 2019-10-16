@@ -95,4 +95,11 @@ $ git fra <release-name>
 When you want to do a local cleanup and remove all the branches already merged to `develop` and `master`, you can run the below command:
 ```console
 $ git general.clean
+$ git gcl
+```
+
+When you want to force the application of the rules in the .gitignore file on an existing repository, you can run the below command:
+```console
+$ git general.ignore.force
+$ git gif
 ```
