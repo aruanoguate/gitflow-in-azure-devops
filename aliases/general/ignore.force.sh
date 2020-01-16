@@ -7,7 +7,7 @@
 verifyInGitRepo;
 verifyNoUncommitedChanges;
 
-# To remove all branches already merged with the exception of master and develop
+# To remove all files and then re-add (this time following the gitignore rules)
 git rm -r --cached .
 git add .
 git commit -m ".gitignore forced on repo"
