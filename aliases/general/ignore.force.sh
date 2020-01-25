@@ -11,3 +11,4 @@ verifyNoUncommitedChanges;
 git rm -r --cached .
 git add .
 git commit -m ".gitignore forced on repo"
+showSuccess "A commit was created with the latest changes";
