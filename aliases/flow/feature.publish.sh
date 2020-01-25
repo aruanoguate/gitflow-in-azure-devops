@@ -1,11 +1,15 @@
 #!/bin/bash
 
 # Imports
-. $HOME/gitflow/modules/flow.sh
+. $HOME/gitflow/modules/force.sh
+. $HOME/gitflow/modules/get.sh
+. $HOME/gitflow/modules/show.sh
+. $HOME/gitflow/modules/try.sh
+. $HOME/gitflow/modules/verify.sh
 
 # Validations
 verifyInGitRepo;
-verifyBranchType "feature";
+verifyBranchTypeIs "feature";
 verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
@@ -21,5 +25,4 @@ git pr create \
   --reviewers "CompIQ Team" \
   --target-branch develop \
   --title "Feature completed: $FEATURE_NAME";
-git checkout develop;
 showSuccess "The feature branch was published";

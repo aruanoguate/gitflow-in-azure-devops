@@ -1,11 +1,15 @@
 #!/bin/bash
 
 # Imports
-. $HOME/gitflow/modules/flow.sh
+. $HOME/gitflow/modules/force.sh
+. $HOME/gitflow/modules/get.sh
+. $HOME/gitflow/modules/show.sh
+. $HOME/gitflow/modules/try.sh
+. $HOME/gitflow/modules/verify.sh
 
 # Validations
 verifyInGitRepo;
-verifyBranchType "hotfix";
+verifyBranchTypeIs "hotfix";
 verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
@@ -27,5 +31,4 @@ git pr create \
   --reviewers "CompIQ Team" \
   --target-branch develop \
   --title "Hotfix completed: $HOTFIX_NAME";
-git checkout develop;
 showSuccess "The hotfix branch was published";

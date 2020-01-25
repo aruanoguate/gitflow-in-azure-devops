@@ -44,8 +44,8 @@ $ git fi
 
 You can create a new feature branch by running any of the below commands:
 ```console
-$ git flow.feature.start <feature-name>
-$ git ffs <feature-name>
+$ git flow.feature.start $feature_branch_name
+$ git ffs $feature_branch_name
 ```
 
 When you're done with your changes, you can publish the branch to `develop` by running any of the below commands on a checked out feature branch, this will create a *pull request* on the server:
@@ -59,8 +59,8 @@ $ git ffp
 
 You can create a new hotfix branch by running any of the below commands:
 ```console
-$ git flow.hotfix.start <hotfix-name>
-$ git fhs <hotfix-name>
+$ git flow.hotfix.start $hotfix_branch_name
+$ git fhs $hotfix_branch_name
 ```
 
 When you're done with your changes, you can publish the branch to `develop` and `master` by running any of the below commands on a checked out hotfix branch, this will create two *pull request* on the server:
@@ -74,8 +74,8 @@ $ git fhp
 
 You can create a new release branch by running any of the below commands:
 ```console
-$ git flow.release.start <release-name>
-$ git frs <release-name>
+$ git flow.release.start $release_branch_name
+$ git frs $release_branch_name
 ```
 
 When you're done with your adjustments, you can publish the branch to `develop` and `master` by running any of the below commands on a checked out release branch, this will create two *pull request* on the server:
@@ -86,8 +86,8 @@ $ git frp
 
 In cases when you're certain that no adjustments are needed before the release, you can perform the two above actions at the same time by running any of the below commands:
 ```console
-$ git flow.release.all <release-name>
-$ git fra <release-name>
+$ git flow.release.all $release_branch_name
+$ git fra $release_branch_name
 ```
 
 ### Other utilities
