@@ -16,4 +16,4 @@ git reset --hard origin/master
 git checkout develop
 git reset --hard origin/develop
 git branch --merged | grep -v "\*" | grep -Ev "(\*|master|develop)" | xargs -n 1 git branch -d
-showSuccess "The repository was successfully cleaned";
+showSuccess "The repository was cleaned";
