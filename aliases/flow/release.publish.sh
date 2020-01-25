@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Imports
-. $HOME/gitflow/modules/flow.sh
+. $HOME/gitflow/modules/get.sh
+. $HOME/gitflow/modules/show.sh
+. $HOME/gitflow/modules/verify.sh
 
 # Validations
 verifyInGitRepo;

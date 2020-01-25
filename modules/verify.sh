@@ -1,33 +1,8 @@
-function showError()
-{
-    echo -e "\e[31mERROR: $1\e[0m";
-}
+# Imports
+. $HOME/gitflow/modules/get.sh;
+. $HOME/gitflow/modules/show.sh;
 
-function showWarning()
-{
-    echo -e "\e[33mWARNING: $1\e[0m";
-}
-
-function showSuccess()
-{
-    echo -e "\e[32mSUCCESS: $1\e[0m";
-}
-
-function getBranchName()
-{
-    local BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD);
-    echo "$BRANCH_NAME";
-}
-
-function getBranchNameWithoutPrefix()
-{
-    local BRANCH_NAME_WITHOUT_PREFIX="$(getBranchName)";
-    local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"feature/"/""};
-    local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"hotfix/"/""};
-    local BRANCH_NAME_WITHOUT_PREFIX=${BRANCH_NAME_WITHOUT_PREFIX/#"release/"/""};
-    echo "$BRANCH_NAME_WITHOUT_PREFIX";
-}
-
+# Functions
 function verifyInGitRepo()
 {
     git rev-parse --git-dir >/dev/null 2>&1;
@@ -119,43 +94,4 @@ function verifyNoUncommitedChanges()
         exit 1;
     fi
 
-}
-
-function forceBranchUpdateFromOrigin()
-{
-    local BRANCH_CURRENT="$(getBranchName)";
-    local BRANCH_TO_UPDATE=$1;
-    git fetch origin $BRANCH_TO_UPDATE;
-    git checkout $BRANCH_TO_UPDATE;
-    git reset --hard origin/$BRANCH_TO_UPDATE;
-    git checkout $BRANCH_CURRENT;
-}
-
-function tryRebase()
-{
-    local BRANCH_TO_REBASE=$1;
-    git rebase $BRANCH_TO_REBASE;
-    local REBASE_RESULT=$?;
-    if [[ $REBASE_RESULT -ne 0 ]];
-    then
-        git rebase --abort;
-        showError "Not able to automatically rebase '$BRANCH_TO_REBASE', rebase manually and then publish again";
-        exit 1;
-    fi
-}
-
-function tryCreateBranch()
-{
-    local BRANCH_TO_CREATE=$1;
-    local BRANCH_TO_COPY=$2;
-
-    git rev-parse --verify $BRANCH_TO_CREATE;
-    local BRANCH_VERIFICATION_RESULT=$?;
-
-    if [[ $BRANCH_VERIFICATION_RESULT -ne 0 ]];
-    then
-        git branch $BRANCH_TO_CREATE $BRANCH_TO_COPY;
-    else
-        showWarning "Branch '$BRANCH_TO_CREATE' already exists, it was not modified";
-    fi
 }
