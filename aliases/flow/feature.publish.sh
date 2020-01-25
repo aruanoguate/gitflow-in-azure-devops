@@ -25,5 +25,4 @@ git pr create \
   --reviewers "CompIQ Team" \
   --target-branch develop \
   --title "Feature completed: $FEATURE_NAME";
-git checkout develop;
 showSuccess "The feature branch was published";

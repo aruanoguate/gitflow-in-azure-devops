@@ -26,5 +26,4 @@ git pr create \
   --reviewers "CompIQ Team" \
   --target-branch develop \
   --title "Next release: $RELEASE_NAME";
-git checkout develop;
 showSuccess "The release branch was published";
