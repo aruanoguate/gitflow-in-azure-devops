@@ -8,7 +8,7 @@
 # Validations
 verifyInGitRepo;
 verifyNoUncommitedChanges;
-verifyCurrentBranch "master";
+verifyBranchNameIs "master";
 verifyUpToDateBranch;
 
 # Process

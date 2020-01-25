@@ -7,7 +7,7 @@
 
 # Validations
 verifyInGitRepo;
-verifyBranchType "release";
+verifyBranchTypeIs "release";
 verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 

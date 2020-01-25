@@ -9,7 +9,7 @@
 
 # Validations
 verifyInGitRepo;
-verifyBranchType "hotfix";
+verifyBranchTypeIs "hotfix";
 verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 

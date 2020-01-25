@@ -15,7 +15,7 @@ function verifyInGitRepo()
 	fi
 }
 
-function verifyBranchType()
+function verifyBranchTypeIs()
 {
     local BRANCH_TYPE=$1;
     local BRANCH_NAME="$(getBranchName)";
@@ -27,7 +27,7 @@ function verifyBranchType()
     fi
 }
 
-function verifyCurrentBranch()
+function verifyBranchNameIs()
 {
     local DESIRED_BRANCH=$1;
     local CURRENT_BRANCH="$(getBranchName)";
