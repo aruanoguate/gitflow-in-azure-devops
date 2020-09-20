@@ -1,7 +1,7 @@
 # GitFlow for Azure DevOps
 
 ## Introduction 
-This tool allows a team to implement the **GitFlow** methodology for branch management along with code review practices enforce by the usage of *pull requests*. 
+This tool allows the implementation of the **GitFlow** methodology for branch management along with code review practices enforced by the usage of *pull requests*. 
 
 Since the *pull requests* are not a native **git** feature, we rely on **Azure DevOps** or **Team Foundation Server** to handle them. Also, please consider this tool only works on **Windows** operative system.
 

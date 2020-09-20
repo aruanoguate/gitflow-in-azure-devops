@@ -1,2 +1,5 @@
-git config --global alias.gcl "!func() { git general.clean $@; }; func"
-git config --global alias.gif "!func() { git general.ignore.force $@; }; func"
+git config --global --unset-all alias.gcl
+git config --global --replace-all alias.gcl general.clean
+
+git config --global --unset-all alias.gif
+git config --global --replace-all alias.gif general.ignore.force
