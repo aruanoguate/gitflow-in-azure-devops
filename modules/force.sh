@@ -6,7 +6,7 @@ function forceBranchUpdateFromOrigin()
 {
     local BRANCH_CURRENT="$(getBranchName)";
     local BRANCH_TO_UPDATE=$1;
-    git fetch origin $BRANCH_TO_UPDATE;
+    git fetch origin;
     git checkout $BRANCH_TO_UPDATE;
     git reset --hard origin/$BRANCH_TO_UPDATE;
     git checkout $BRANCH_CURRENT;

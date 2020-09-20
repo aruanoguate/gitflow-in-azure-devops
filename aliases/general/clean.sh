@@ -10,7 +10,7 @@ verifyBranchNameIs "master";
 verifyNoUncommitedChanges;
 
 # To remove all branches already merged with the exception of master and develop
-git fetch --all
+git fetch origin
 git remote prune origin
 git reset --hard origin/master
 git checkout develop

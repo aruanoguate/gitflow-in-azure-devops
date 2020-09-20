@@ -16,7 +16,7 @@ verifyNoUncommitedChanges;
 
 # Process
 forceBranchUpdateFromOrigin "develop";
-git branch feature/$BRANCH develop;
+tryCreateBranch "feature/$BRANCH" "develop";
 git checkout feature/$BRANCH;
 tryPushAndSetUpstream;
 showSuccess "The new feature branch was created";

@@ -41,12 +41,22 @@ function tryCreateBranch()
     git rev-parse --verify $BRANCH_TO_CREATE;
     local BRANCH_VERIFICATION_RESULT=$?;
 
-    if [[ $BRANCH_VERIFICATION_RESULT -ne 0 ]];
+    if [[ $BRANCH_VERIFICATION_RESULT -eq 0 ]];
     then
-        git branch $BRANCH_TO_CREATE $BRANCH_TO_COPY;
-    else
         showWarning "Branch '$BRANCH_TO_CREATE' already exists, it was not modified";
+        exit 1;
     fi
+
+    git rev-parse --verify origin/$BRANCH_TO_CREATE;
+    local BRANCH_VERIFICATION_RESULT=$?;
+
+    if [[ $BRANCH_VERIFICATION_RESULT -eq 0 ]];
+    then
+        showError "Branch '$BRANCH_TO_CREATE' already exists in origin, the process was stopped";
+        exit 1;
+    fi
+
+    git branch $BRANCH_TO_CREATE $BRANCH_TO_COPY;
 }
 
 function tryPush()
