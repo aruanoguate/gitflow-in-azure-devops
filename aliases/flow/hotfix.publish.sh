@@ -14,20 +14,22 @@ verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
 # Process
-forceBranchUpdateFromOrigin "master";
-tryRebase "master";
-git push --force;
 HOTFIX_NAME="$(getBranchNameWithoutPrefix)";
+REPOSITORY_NAME="$(getRepositoryName)";
 git pr create \
   --delete-source-branch \
+  --detect on \
   --open \
   --output table \
+  --repository $REPOSITORY_NAME \
   --reviewers "CompIQ Team" \
   --target-branch master \
   --title "Hotfix completed: $HOTFIX_NAME";
 git pr create \
   --delete-source-branch \
+  --detect on \
   --output table \
+  --repository $REPOSITORY_NAME \
   --reviewers "CompIQ Team" \
   --target-branch develop \
   --title "Hotfix completed: $HOTFIX_NAME";

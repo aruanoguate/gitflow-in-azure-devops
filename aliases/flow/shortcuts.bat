@@ -1,9 +1,26 @@
-git config --global alias.ffp "!func() { git flow.feature.publish $@; }; func"
-git config --global alias.ffs "!func() { git flow.feature.start $@; }; func"
-git config --global alias.fhp "!func() { git flow.hotfix.publish $@; }; func"
-git config --global alias.fhs "!func() { git flow.hotfix.start $@; }; func"
-git config --global alias.fra "!func() { git flow.release.all $@; }; func"
-git config --global alias.frp "!func() { git flow.release.publish $@; }; func"
-git config --global alias.frs "!func() { git flow.release.start $@; }; func"
-git config --global alias.fi "!func() { git flow.init $@; }; func"
-git config --global alias.fh "!func() { git flow.help $@; }; func"
+git config --global --unset-all alias.ffp
+git config --global --replace-all alias.ffp flow.feature.publish
+
+git config --global --unset-all alias.ffs
+git config --global --replace-all alias.ffs flow.feature.start
+
+git config --global --unset-all alias.fhp
+git config --global --replace-all alias.fhp flow.hotfix.publish
+
+git config --global --unset-all alias.fhs
+git config --global --replace-all alias.fhs flow.hotfix.start
+
+git config --global --unset-all alias.fra
+git config --global --replace-all alias.fra flow.release.all
+
+git config --global --unset-all alias.frp
+git config --global --replace-all alias.frp flow.release.publish
+
+git config --global --unset-all alias.frs
+git config --global --replace-all alias.frs flow.release.start
+
+git config --global --unset-all alias.fi
+git config --global --replace-all alias.fi flow.init
+
+git config --global --unset-all alias.fh
+git config --global --replace-all alias.fh flow.help

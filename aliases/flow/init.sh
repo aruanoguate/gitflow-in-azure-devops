@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Imports
+. $HOME/gitflow/modules/force.sh
 . $HOME/gitflow/modules/show.sh
 . $HOME/gitflow/modules/try.sh
 . $HOME/gitflow/modules/verify.sh
@@ -12,7 +13,8 @@ verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
 # Process
+forceBranchUpdateFromOrigin "master";
 tryCreateBranch "develop" "master";
 git checkout develop;
-git push --set-upstream origin develop;
+tryPushAndSetUpstream;
 showSuccess "The repository was initialized";
