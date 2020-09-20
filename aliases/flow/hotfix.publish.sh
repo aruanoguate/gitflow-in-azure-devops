@@ -14,9 +14,6 @@ verifyNoUncommitedChanges;
 verifyUpToDateBranch;
 
 # Process
-forceBranchUpdateFromOrigin "master";
-tryRebase "master";
-git push --force;
 HOTFIX_NAME="$(getBranchNameWithoutPrefix)";
 REPOSITORY_NAME="$(getRepositoryName)";
 git pr create \

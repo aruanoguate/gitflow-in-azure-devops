@@ -6,6 +6,7 @@ BRANCH=$1;
 # Imports
 . $HOME/gitflow/modules/force.sh
 . $HOME/gitflow/modules/show.sh
+. $HOME/gitflow/modules/try.sh
 . $HOME/gitflow/modules/verify.sh
 
 # Validations
@@ -17,5 +18,5 @@ verifyNoUncommitedChanges;
 forceBranchUpdateFromOrigin "master";
 git branch hotfix/$BRANCH master;
 git checkout hotfix/$BRANCH;
-git push --set-upstream origin hotfix/$BRANCH;
+tryPushAndSetUpstream;
 showSuccess "The new hotfix branch was created";

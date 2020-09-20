@@ -14,5 +14,5 @@ verifyUpToDateBranch;
 # Process
 tryCreateBranch "develop" "master";
 git checkout develop;
-git push --set-upstream origin develop;
+tryPushAndSetUpstream;
 showSuccess "The repository was initialized";

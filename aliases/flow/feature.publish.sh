@@ -15,8 +15,8 @@ verifyUpToDateBranch;
 
 # Process
 forceBranchUpdateFromOrigin "develop";
-tryRebase "develop";
-git push --force;
+tryMerge "develop";
+tryPush;
 FEATURE_NAME="$(getBranchNameWithoutPrefix)";
 REPOSITORY_NAME="$(getRepositoryName)";
 git pr create \
