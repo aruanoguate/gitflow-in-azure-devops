@@ -9,7 +9,7 @@ function PROCESS_ALIAS()
     echo $gitCmd >> temp_install.bash
 
     local filename="$(pwd)/$2"
-    local aliasCmd="!func() { bash $filename  \$@; }; func"
+    local aliasCmd="!func() { bash $filename  \\\$@; }; func"
     
     local gitCmd="git config --global --replace-all $aliasName \"$aliasCmd\" "
     echo $gitCmd >> temp_install.bash
