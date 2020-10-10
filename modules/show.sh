@@ -1,15 +1,15 @@
 # Functions
 function showError()
 {
-    echo -e "\e[31mERROR: $1\e[0m";
+    echo -e "\x1b[31mERROR: $1\x1b[0m";
 }
 
 function showWarning()
 {
-    echo -e "\e[33mWARNING: $1\e[0m";
+    echo -e "\x1b[33mWARNING: $1\x1b[0m";
 }
 
 function showSuccess()
 {
-    echo -e "\e[32mSUCCESS: $1\e[0m";
+    echo -e "\x1b[32mSUCCESS: $1\x1b[0m";
 }

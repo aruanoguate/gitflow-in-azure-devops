@@ -15,22 +15,6 @@ verifyUpToDateBranch;
 
 # Process
 HOTFIX_NAME="$(getBranchNameWithoutPrefix)";
-REPOSITORY_NAME="$(getRepositoryName)";
-git pr create \
-  --delete-source-branch \
-  --detect on \
-  --open \
-  --output table \
-  --repository $REPOSITORY_NAME \
-  --reviewers "CompIQ Team" \
-  --target-branch master \
-  --title "Hotfix completed: $HOTFIX_NAME";
-git pr create \
-  --delete-source-branch \
-  --detect on \
-  --output table \
-  --repository $REPOSITORY_NAME \
-  --reviewers "CompIQ Team" \
-  --target-branch develop \
-  --title "Hotfix completed: $HOTFIX_NAME";
+tryCreatePullRequest "master" "Hotfix completed: $HOTFIX_NAME" "OPEN BROWSER";
+tryCreatePullRequest "develop" "Hotfix completed: $HOTFIX_NAME" "NO BROWSER";
 showSuccess "The hotfix branch was published";

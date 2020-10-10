@@ -1,6 +1,7 @@
 # Imports
 . $HOME/gitflow/modules/get.sh;
 . $HOME/gitflow/modules/show.sh;
+. $HOME/gitflow/modules/try.sh;
 
 # Functions
 function verifyInGitRepo()
@@ -10,7 +11,7 @@ function verifyInGitRepo()
 
     if [[ $REPO_REVISION_RESULT -ne 0 ]]; 
     then
-		showError "This can only be executed on a valid Git repository";
+		showWarning "This can only be executed on a valid Git repository";
         exit 1;
 	fi
 }
@@ -22,7 +23,7 @@ function verifyBranchTypeIs()
     
     if [[ "$BRANCH_NAME" != "$BRANCH_TYPE/"* ]]; 
     then
-        showError "This can only be executed on '$BRANCH_TYPE' branches";
+        showWarning "This can only be executed on '$BRANCH_TYPE' branches";
         exit 1;
     fi
 }
@@ -34,7 +35,7 @@ function verifyBranchNameIs()
     
     if [[ "$CURRENT_BRANCH" != "$DESIRED_BRANCH" ]]; 
     then
-        showError "This can only be executed on '$DESIRED_BRANCH' branch";
+        showWarning "This can only be executed on '$DESIRED_BRANCH' branch";
         exit 1;
     fi
 }
@@ -43,7 +44,15 @@ function verifyUpToDateBranch()
 {
     local BRANCH_NAME="$(getBranchName)";
 
-    git fetch origin $BRANCH_NAME;
+    tryFetch;
+
+    git rev-parse @{u}
+    local VERIFY_UPSTREAM_BRANCH=$?;
+    if [[ $VERIFY_UPSTREAM_BRANCH -ne 0 ]]; 
+    then
+        showWarning "The branch '$BRANCH_NAME' does not have an upstream branch in origin";
+        exit 1;
+    fi
 
     local LAST_LOCAL_COMMIT=$(git rev-parse HEAD);
     local LAST_UPSTREAM_COMMIT=$(git rev-parse @{u});
@@ -51,7 +60,7 @@ function verifyUpToDateBranch()
     if [[ "$LAST_LOCAL_COMMIT" != "$LAST_UPSTREAM_COMMIT" ]]; 
     then
         git status;
-        showError "The branch '$BRANCH_NAME' should be up to date with its remote counterpart";
+        showWarning "The branch '$BRANCH_NAME' should be up to date with its upstream branch in origin";
         exit 1;
     fi
 }
@@ -61,7 +70,7 @@ function verifyBranchNameProvided()
     local BRANCH_NAME=$1;
     if [[ -z "$BRANCH_NAME" ]]; 
     then
-        showError "A name for the branch needs to be provided";
+        showWarning "A name for the branch needs to be provided";
         exit 1;
     fi
 }
@@ -72,7 +81,7 @@ function verifyNoUncommitedChanges()
     local VERIFY_NONSTAGED_CHANGES=$?;
     if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
     then
-        showError "Non-staged changes where found, stage and commit them before continue";
+        showWarning "Non-staged changes where found, stage and commit them before continue";
         exit 1;
     fi
 
@@ -80,7 +89,7 @@ function verifyNoUncommitedChanges()
     local VERIFY_STAGED_CHANGES=$?;
 	if  [[ $VERIFY_STAGED_CHANGES -ne 0 ]]; 
     then
-        showError "Staged changes where found, commit them before continue";
+        showWarning "Staged changes where found, commit them before continue";
         exit 1;
 	fi
 
@@ -90,7 +99,7 @@ function verifyNoUncommitedChanges()
     if [[ $VERIFY_NONSTAGED_CHANGES -ne 0 ]];
     then
         git reset;
-        showError "Non-tracked changes where found, stage and commit them before continue";
+        showWarning "Non-tracked changes where found, stage and commit them before continue";
         exit 1;
     fi
 

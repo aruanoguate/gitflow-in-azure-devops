@@ -17,6 +17,6 @@ verifyNoUncommitedChanges;
 # Process
 forceBranchUpdateFromOrigin "develop";
 tryCreateBranch "release/$BRANCH" "develop";
-git checkout release/$BRANCH;
+tryCheckout "release/$BRANCH";
 tryPushAndSetUpstream;
 showSuccess "The new release branch was created";
