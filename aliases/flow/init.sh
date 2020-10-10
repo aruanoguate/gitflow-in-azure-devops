@@ -15,6 +15,6 @@ verifyUpToDateBranch;
 # Process
 forceBranchUpdateFromOrigin "master";
 tryCreateBranch "develop" "master";
-git checkout develop;
+tryCheckout "develop";
 tryPushAndSetUpstream;
 showSuccess "The repository was initialized";

@@ -1,13 +1,14 @@
 # Imports
 . $HOME/gitflow/modules/get.sh;
+. $HOME/gitflow/modules/try.sh;
 
 # Functions
 function forceBranchUpdateFromOrigin()
 {
     local BRANCH_CURRENT="$(getBranchName)";
     local BRANCH_TO_UPDATE=$1;
-    git fetch origin;
-    git checkout $BRANCH_TO_UPDATE;
+    tryFetch;
+    tryCheckout "$BRANCH_TO_UPDATE";
     git reset --hard origin/$BRANCH_TO_UPDATE;
-    git checkout $BRANCH_CURRENT;
+    tryCheckout "$BRANCH_CURRENT";
 }

@@ -13,22 +13,6 @@ verifyUpToDateBranch;
 
 # Process
 RELEASE_NAME="$(getBranchNameWithoutPrefix)";
-REPOSITORY_NAME="$(getRepositoryName)";
-git pr create \
-  --delete-source-branch \
-  --detect on \
-  --open \
-  --output table \
-  --repository $REPOSITORY_NAME \
-  --reviewers "CompIQ Team" \
-  --target-branch master \
-  --title "Next release: $RELEASE_NAME";
-git pr create \
-  --delete-source-branch \
-  --detect on \
-  --output table \
-  --repository $REPOSITORY_NAME \
-  --reviewers "CompIQ Team" \
-  --target-branch develop \
-  --title "Next release: $RELEASE_NAME";
+tryCreatePullRequest "master" "Next release: $RELEASE_NAME" "OPEN BROWSER";
+tryCreatePullRequest "develop" "Next release: $RELEASE_NAME" "NO BROWSER";
 showSuccess "The release branch was published";

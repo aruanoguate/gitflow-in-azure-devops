@@ -17,6 +17,6 @@ verifyNoUncommitedChanges;
 # Process
 forceBranchUpdateFromOrigin "master";
 tryCreateBranch "hotfix/$BRANCH" "master";
-git checkout hotfix/$BRANCH;
+tryCheckout "hotfix/$BRANCH";
 tryPushAndSetUpstream;
 showSuccess "The new hotfix branch was created";
