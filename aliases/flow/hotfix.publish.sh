@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Imports
-. $HOME/gitflow/modules/force.sh
-. $HOME/gitflow/modules/get.sh
-. $HOME/gitflow/modules/show.sh
-. $HOME/gitflow/modules/try.sh
-. $HOME/gitflow/modules/verify.sh
+. "${AZ_GITFLOW_DIR}/modules/force.sh"
+. "${AZ_GITFLOW_DIR}/modules/get.sh"
+. "${AZ_GITFLOW_DIR}/modules/show.sh"
+. "${AZ_GITFLOW_DIR}/modules/try.sh"
+. "${AZ_GITFLOW_DIR}/modules/verify.sh"
 
 # Validations
 verifyInGitRepo;

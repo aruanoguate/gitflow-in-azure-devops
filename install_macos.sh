@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TODO: update to allow config via args
+AZ_GITFLOW_DIR=${AZ_GITFLOW_DIR:-"${HOME}/gitflow"}
+
 function PROCESS_ALIAS()
 {
     local aliasName="alias.$(basename $1).$(basename $2)";
@@ -24,14 +27,14 @@ function PROCESS_BAT()
 }
 
 set +v
-rm -Rf ~/gitflow/
-mkdir ~/gitflow/
-cp -f HELP.md ~/gitflow/
-cp -Rf config ~/gitflow/config/
-cp -Rf modules ~/gitflow/modules/
-cp -Rf aliases ~/gitflow/aliases/
+rm -Rf "${AZ_GITFLOW_DIR}"
+mkdir "${AZ_GITFLOW_DIR}"
+cp -f HELP.md "${AZ_GITFLOW_DIR}"
+cp -Rf config "${AZ_GITFLOW_DIR}/config/"
+cp -Rf modules "${AZ_GITFLOW_DIR}/modules/"
+cp -Rf aliases "${AZ_GITFLOW_DIR}/aliases/"
 
-pushd ~/gitflow/
+pushd "${AZ_GITFLOW_DIR}"
 echo "#!/bin/bash" > temp_install.bash
 for A in aliases/*; do
     if [ -d "${A}" ]; then
@@ -45,6 +48,7 @@ for A in aliases/*; do
         done
     fi
 done
+
 bash temp_install.bash
 popd
 

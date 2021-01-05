@@ -4,7 +4,7 @@
 BRANCH=$1;
 
 # Imports
-. $HOME/gitflow/modules/verify.sh
+. "${AZ_GITFLOW_DIR}/modules/verify.sh"
 
 # Validations
 verifyInGitRepo;

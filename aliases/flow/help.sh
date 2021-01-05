@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Imports
-. $HOME/gitflow/modules/show.sh
+. "${AZ_GITFLOW_DIR}/modules/show.sh"
 
 # Process
 # cp $HOME/gitflow/config/md.nanorc /usr/share/nano/

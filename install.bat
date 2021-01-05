@@ -1,13 +1,15 @@
 ECHO OFF
 
-rmdir /S /Q %userprofile%\gitflow\
-mkdir %userprofile%\gitflow\
-xcopy /E /Y HELP.md %userprofile%\gitflow\
-xcopy /E /Y config %userprofile%\gitflow\config\
-xcopy /E /Y modules %userprofile%\gitflow\modules\
-xcopy /E /Y aliases %userprofile%\gitflow\aliases\
+SET AZ_GITFLOW_DIR=%userprofile%\gitflow\
 
-pushd %userprofile%\gitflow\
+rmdir /S /Q %AZ_GITFLOW_DIR%
+mkdir %AZ_GITFLOW_DIR%
+xcopy /E /Y HELP.md %AZ_GITFLOW_DIR%
+xcopy /E /Y config %AZ_GITFLOW_DIR%\config\
+xcopy /E /Y modules %AZ_GITFLOW_DIR%\modules\
+xcopy /E /Y aliases %AZ_GITFLOW_DIR%\aliases\
+
+pushd %AZ_GITFLOW_DIR%
 copy NUL temp_install.bat
 FOR /f %%A IN ('dir /b aliases') DO (
     FOR /f %%S IN ('dir /b aliases\%%A\*.sh') DO (
